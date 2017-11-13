@@ -1,0 +1,9 @@
+---
+ - hosts: localhost
+   tasks:
+    - name: finding ami by region and name 
+      ec2_key:
+       name: ashutoshhkey
+       state: absent
+      register: key
+

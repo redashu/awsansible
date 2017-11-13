@@ -1,0 +1,11 @@
+---
+ - hosts: localhost
+   tasks:
+    - name: finding ami by region and name 
+      ec2_ami_find: 
+       region: ap-south-1
+       name: ubuntu-14_04-grails-tomcat-8-morph.0.1  
+#  here in the name section u can replace your ami name it will print your ami_id
+      register: ami_data
+
+    - debug: msg="ami id is  {{ ami_data.results[0].ami_id }}"

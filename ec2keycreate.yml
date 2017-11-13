@@ -1,0 +1,15 @@
+---
+ - hosts: localhost
+   tasks:
+    - name: finding ami by region and name 
+      ec2_key:
+       name: ashutoshhkey
+       state: present
+      register: mykey
+
+    - name: saving into a file 
+      copy: content="{{ mykey.key.private_key }}"  dest=/root/ashutoshhkey.pem 
+
+#  if u r using  fedora or redhat then selinux module must be created with package libselinux-python 
+#
+#
