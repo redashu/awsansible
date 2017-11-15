@@ -1,0 +1,8 @@
+---
+ - hosts: localhost
+   tasks:
+    - name: deleting vpc subnet
+      ec2_vpc_subnet:
+       state: absent
+       vpc_id: vpc-be8569d6
+       cidr: 10.10.100.0/24

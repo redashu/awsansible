@@ -1,0 +1,14 @@
+---
+ - hosts: localhost
+   tasks:
+    - name: finding ami by region and name 
+      ec2_group_facts:
+      register: mysec
+
+    - name: printing this variable
+      shell: echo "{{ item.group_name }}"  >>/root/new.txt
+      with_items: "{{ mysec.security_groups }}"
+
+#  if u r using  fedora or redhat then selinux module must be created with package libselinux-python 
+#
+#

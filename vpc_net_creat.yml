@@ -1,0 +1,13 @@
+---
+ - hosts: localhost
+   tasks:
+    - name: creat vpc
+      ec2_vpc_net:
+       name: vpczonaaid322
+       cidr_block: 10.124.0.0/16
+       region: ap-south-1
+      register: vpcnet
+
+    - debug: msg="vpc id is  {{ item }}"
+      with_items: "{{ vpcnet.vpc }}"
+

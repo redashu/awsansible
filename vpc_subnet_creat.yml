@@ -1,0 +1,14 @@
+---
+ - hosts: localhost
+   tasks:
+    - name: create vpc subet create
+      ec2_vpc_subnet:
+       state: present
+       az: ap-south-1a
+       vpc_id: vpc-be8569d6
+       cidr: 10.10.100.0/24
+       resource_tags:
+        name: my subnet
+      register:  network
+
+    - debug: var=network    
