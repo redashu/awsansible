@@ -1,0 +1,11 @@
+---
+ - hosts: localhost
+   gather_facts: no
+   tasks:
+    - name: gathering facts
+      ec2_vpc_net_facts:
+       region: ap-south-1
+
+      register: cl
+    - lineinfile: line="{{ item.key }} and the {{ item.value }}" dest=/root/hello.txt create=yes
+      with_dict: "{{ cl.vpcs[0] }}"
